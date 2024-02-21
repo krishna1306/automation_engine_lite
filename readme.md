@@ -2,6 +2,9 @@
 
 ```bash
 uvicorn app:app --host 0.0.0.0
+
+# for testing
+uvicorn app:app --host 0.0.0.0 --reload
 ```
 
 First `app` refers to `app.py` (main python file) and the second `app` refers to the FastAPI app inside the main python file.
