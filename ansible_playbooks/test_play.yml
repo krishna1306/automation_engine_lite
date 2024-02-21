@@ -1,0 +1,7 @@
+---
+- name: Test Ansible connection to localhost
+  hosts: localhost
+  tasks:
+    - name: Print a message
+      debug:
+        msg: "Ansible is working fine on localhost!"
