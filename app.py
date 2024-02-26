@@ -3,7 +3,17 @@ import random
 from fastapi import FastAPI
 from pydantic import BaseModel, conint
 import subprocess
-import os
+# import os
+
+# add http basic auth
+from typing import Annotated
+
+from fastapi import Depends, FastAPI
+from fastapi.security import HTTPBasic, HTTPBasicCredentials
+
+app = FastAPI()
+
+security = HTTPBasic()
 
 # Define a Pydantic model for the request body
 class Payload(BaseModel):
@@ -17,11 +27,11 @@ class Level(BaseModel):
 app = FastAPI()
 
 @app.get("/")
-def check_status():
+def check_status(credentials: Annotated[HTTPBasicCredentials, Depends(security)]):
     return {"status": "working"}
 
 @app.post("/automate")
-async def take_action(payload: Payload):
+async def take_action(payload: Payload, credentials: Annotated[HTTPBasicCredentials, Depends(security)]):
 
     # Define the path to the shell script
     script_path = "ansible_playbooks/run_playbook.sh"
@@ -34,7 +44,7 @@ async def take_action(payload: Payload):
     return {'status': 'success', 'data': {'payload': payload.model_dump(), 'output': result.stdout}}
 
 @app.get("/get_link_kpis/{link_id}")
-async def get_link_kpis(link_id: str):
+async def get_link_kpis(link_id: str, credentials: Annotated[HTTPBasicCredentials, Depends(security)]):
 
     tx = 0
     rx = 0
@@ -61,7 +71,7 @@ async def get_link_kpis(link_id: str):
     return sample_kpi_data
 
 @app.post("/set_link_bw_level")
-async def set_link_bw_level(level: Level):
+async def set_link_bw_level(level: Level, credentials: Annotated[HTTPBasicCredentials, Depends(security)]):
 
     set_level = level.value
 
@@ -81,7 +91,7 @@ async def set_link_bw_level(level: Level):
     }
 
 @app.get("/get_link_bw_level/{link_id}")
-async def get_link_bw_level(link_id: str):
+async def get_link_bw_level(link_id: str, credentials: Annotated[HTTPBasicCredentials, Depends(security)]):
 
     with open('config.json', 'r') as file:
         # Load the JSON data

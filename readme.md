@@ -1,5 +1,7 @@
 ## Start Uvicorn directly
 
+Before running this, please activate virtual environment inside project directory.
+
 ```bash
 uvicorn app:app --host 0.0.0.0
 
