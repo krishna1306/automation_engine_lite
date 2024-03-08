@@ -4,7 +4,7 @@
   tasks:
     - name: Send POST request
       uri:
-        url: "http://10.66.69.184:8000/set_link_bw_level"
+        url: "http://10.66.69.184:8000/automate"
         method: POST
         body_format: json
         body:
