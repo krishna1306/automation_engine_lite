@@ -1,0 +1,23 @@
+---
+- name: Issue POST call
+  hosts: localhost
+  tasks:
+    - name: Send POST request
+      uri:
+        url: "http://10.66.69.184:8000/change_config"
+        method: POST
+        force_basic_auth: yes
+        url_username: "admin"
+        url_password: "admin"
+        use_proxy: false
+        validate_certs: false
+        timeout: 30
+        body_format: json
+        body:
+          value: "{{ var1 }}"
+        status_code: 200
+      register: result
+
+    - name: Display response
+      debug:
+        var: result

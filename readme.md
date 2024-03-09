@@ -11,6 +11,14 @@ uvicorn app:app --host 0.0.0.0 --reload
 
 First `app` refers to `app.py` (main python file) and the second `app` refers to the FastAPI app inside the main python file.
 
+## Test Ansible Playbook
+
+Replace `var1` value with the level setting you wish config file to have
+
+```bash
+ansible-playbook ansible_playbooks/change_config.yml --extra-vars "var1=1"
+```
+
 ## Systemd Setup
 
 A systemd service file is created at `/etc/systemd/system/automation-engine-lite.service`
