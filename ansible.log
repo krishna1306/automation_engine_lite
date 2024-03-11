@@ -1,0 +1,82 @@
+[2024-03-11 03:56:39] -- start
+[WARNING]: provided hosts list is empty, only localhost is available. Note that
+the implicit localhost does not match 'all'
+
+PLAY [Issue POST call] *********************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Send POST request] *******************************************************
+ok: [localhost]
+
+TASK [Display response] ********************************************************
+ok: [localhost] => {
+    "result": {
+        "changed": false,
+        "connection": "close",
+        "content_length": "56",
+        "content_type": "application/json",
+        "cookies": {},
+        "cookies_string": "",
+        "date": "Mon, 11 Mar 2024 07:56:39 GMT",
+        "elapsed": 0,
+        "failed": false,
+        "json": [
+            {
+                "status": "Changed the link BW level from 1 to 2"
+            },
+            200
+        ],
+        "msg": "OK (56 bytes)",
+        "redirected": false,
+        "server": "uvicorn",
+        "status": 200,
+        "url": "http://10.66.69.184:8000/change_config"
+    }
+}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[2024-03-11 03:56:39] -- end
+[2024-03-11 03:57:40] -- start
+[WARNING]: provided hosts list is empty, only localhost is available. Note that
+the implicit localhost does not match 'all'
+
+PLAY [Issue POST call] *********************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Send POST request] *******************************************************
+ok: [localhost]
+
+TASK [Display response] ********************************************************
+ok: [localhost] => {
+    "result": {
+        "changed": false,
+        "connection": "close",
+        "content_length": "56",
+        "content_type": "application/json",
+        "cookies": {},
+        "cookies_string": "",
+        "date": "Mon, 11 Mar 2024 07:57:40 GMT",
+        "elapsed": 0,
+        "failed": false,
+        "json": [
+            {
+                "status": "Changed the link BW level from 2 to 1"
+            },
+            200
+        ],
+        "msg": "OK (56 bytes)",
+        "redirected": false,
+        "server": "uvicorn",
+        "status": 200,
+        "url": "http://10.66.69.184:8000/change_config"
+    }
+}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+[2024-03-11 03:57:40] -- end
